@@ -272,3 +272,19 @@ const removeFromStack = (id) => {
             </div>
           )}
         </section>
+        <section className="simple-section" id="projects">
+          <span className="section-kicker">PROJECTS</span>
+          <h2>Everything you need to start building.</h2>
+          <p>Combine frontend, backend, database, DevOps and development tools into one clean stack.</p>
+        </section>
+
+        <section className="simple-section" id="about">
+          <span className="section-kicker">ABOUT</span>
+          <h2>Make technology choices with confidence.</h2>
+          <p>Dev Stack helps developers discover technologies and organize the tools they want to use.</p>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
