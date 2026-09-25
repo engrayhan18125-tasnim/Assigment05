@@ -151,3 +151,47 @@ function StackSidebar({ stack, onRemove, onRemoveAll }) {
     </aside>
   );
 }
+
+function Footer() {
+  return (
+    <footer className="footer" id="contact">
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <Logo />
+          <p>Build a smarter technology stack for modern web development.</p>
+          <div className="socials">
+            <a href="https://github.com" target="_blank" rel="noreferrer"><Github size={18} /></a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer"><Twitter size={18} /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer"><Linkedin size={18} /></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Product</h4>
+          <a href="#technologies">Technologies</a>
+          <a href="#projects">Projects</a>
+          <a href="#home">Features</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="#home">Careers</a>
+        </div>
+
+        <div>
+          <h4>Legal</h4>
+          <a href="#home">Privacy</a>
+          <a href="#home">Terms</a>
+          <a href="#home">License</a>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <span>© 2026 Dev Stack. All rights reserved.</span>
+        <div><a href="#home">Privacy</a><a href="#home">Terms</a></div>
+      </div>
+    </footer>
+  );
+}
