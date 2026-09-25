@@ -195,3 +195,28 @@ function Footer() {
     </footer>
   );
 }
+
+export default function App() {
+  const [technologies, setTechnologies] = useState([]);
+  const [stack, setStack] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/technologies.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Could not load technology data.");
+        return res.json();
+      })
+      .then((data) => setTechnologies(data))
+      .catch(() => toast.error("Technology data could not be loaded."))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const addToStack = (tech) => {
+    if (stack.some((item) => item.id === tech.id)) {
+      toast.warning(`${tech.name} is already in your stack.`);
+      return;
+    }
+    setStack((current) => [...current, tech]);
+    toast.success(`${tech.name} added to your stack.`);
+  };
