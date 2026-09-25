@@ -58,3 +58,29 @@ function Navbar() {
   );
 }
 
+function Hero() {
+  return (
+    <section className="hero" id="home">
+      <div className="hero-copy">
+        <span className="eyebrow">BUILD YOUR PERFECT STACK</span>
+        <h1>
+          Choose the right <span>technologies</span> for your next project.
+        </h1>
+        <p>
+          Explore modern tools, frameworks, databases, and platforms. Build a
+          stack that matches your project and your skill level.
+        </p>
+        <div className="hero-buttons">
+          <a className="primary-btn" href="#technologies">
+            Explore Technologies <ArrowRight size={18} />
+          </a>
+          <a className="outline-btn" href="#about">Learn More</a>
+        </div>
+      </div>
+
+      <div className="" aria-hidden="true">
+        <img src={logoss} alt="" />
+      </div>
+    </section>
+  );
+}
