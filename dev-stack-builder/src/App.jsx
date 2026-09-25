@@ -114,3 +114,40 @@ function TechCard({ tech, selected, onAdd }) {
     </article>
   );
 }
+function StackSidebar({ stack, onRemove, onRemoveAll }) {
+  return (
+    <aside className="stack-panel">
+      <div>
+        <h2>Your Stack</h2>
+        <p>{stack.length} Technology{stack.length !== 1 ? "ies" : "y"} Selected</p>
+      </div>
+
+      {stack.length === 0 ? (
+        <div className="empty-stack">
+          <div className="empty-icon"><Layers3 size={28} /></div>
+          <h3>Your stack is empty</h3>
+          <p>Add technologies from the cards to build your stack.</p>
+        </div>
+      ) : (
+        <div className="stack-list">
+          {stack.map((item) => (
+            <div className="stack-item" key={item.id}>
+              <img src={item.icon} alt="" />
+              <div>
+                <strong>{item.name}</strong>
+                <span>{item.category}</span>
+              </div>
+              <button onClick={() => onRemove(item.id)} aria-label={`Remove ${item.name}`}>
+                <X size={18} />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <button className="remove-all" onClick={onRemoveAll} disabled={stack.length === 0}>
+        <Trash2 size={16} /> Remove All
+      </button>
+    </aside>
+  );
+}
