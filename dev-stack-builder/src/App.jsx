@@ -220,3 +220,55 @@ export default function App() {
     setStack((current) => [...current, tech]);
     toast.success(`${tech.name} added to your stack.`);
   };
+const removeFromStack = (id) => {
+    const item = stack.find((tech) => tech.id === id);
+    setStack((current) => current.filter((tech) => tech.id !== id));
+    if (item) toast.info(`${item.name} removed from your stack.`);
+  };
+
+  const removeAll = () => {
+    if (!stack.length) return;
+    setStack([]);
+    toast.info("All technologies removed from your stack.");
+  };
+
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+
+        <section className="technology-section" id="technologies">
+          <div className="section-heading">
+            <div>
+              <span className="section-kicker">TECHNOLOGY LIBRARY</span>
+              <h2>Build your <span>technology stack</span></h2>
+            </div>
+            <p>Pick the tools you need and create your perfect development stack.</p>
+          </div>
+
+          {loading ? (
+            <div className="loading">
+              <div className="spinner"></div>
+              <span>Loading technologies...</span>
+            </div>
+          ) : (
+            <div className="builder-layout">
+              <div className="tech-grid">
+                {technologies.map((tech) => (
+                  <TechCard
+                    key={tech.id}
+                    tech={tech}
+                    selected={stack.some((item) => item.id === tech.id)}
+                    onAdd={addToStack}
+                  />
+                ))}
+              </div>
+              <StackSidebar
+                stack={stack}
+                onRemove={removeFromStack}
+                onRemoveAll={removeAll}
+              />
+            </div>
+          )}
+        </section>
