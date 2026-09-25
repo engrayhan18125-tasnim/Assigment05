@@ -84,3 +84,33 @@ function Hero() {
     </section>
   );
 }
+
+function TechCard({ tech, selected, onAdd }) {
+  return (
+    <article className={`tech-card ${selected ? "selected-card" : ""}`}>
+      <div className="card-top">
+        <div className="icon-holder">
+          <img src={tech.icon} alt={tech.name} onError={(e) => (e.currentTarget.style.display = "none")} />
+        </div>
+        <span className="badge">{tech.badge}</span>
+      </div>
+
+      <h3>{tech.name}</h3>
+      <p className="description">{tech.description}</p>
+
+      <div className="meta-row">
+        <span className="chip">{tech.category}</span>
+        <span className="chip">{tech.difficulty}</span>
+        <span className="rating"><Star size={14} fill="currentColor" /> {tech.rating}</span>
+      </div>
+
+      <button
+        className={`stack-btn ${selected ? "added" : ""}`}
+        disabled={selected}
+        onClick={() => onAdd(tech)}
+      >
+        {selected ? "✓ Added to Stack" : "Add to Stack"}
+      </button>
+    </article>
+  );
+}
